@@ -13,7 +13,7 @@ class DB
         {
             try 
             {
-                DB::$instance = new PDO("");
+                DB::$instance = new PDO("mysql:host=rp2.studenti.math.hr;dbname=hedzet;charset=utf8","student", "pass.mysql");
                 DB::$instance-> setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             }
             catch(PDOException $exception)

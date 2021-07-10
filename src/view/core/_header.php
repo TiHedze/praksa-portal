@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title><?php echo $data["title"];?></title>
-        <script src=<?php echo $data["script"];?>></script>
-        <link rel="stylesheet" href=<?php echo $data["css"];?>>
-    </head>
-    <body>
+
+<head>
+    <title><?php echo $title; ?></title>
+    <!--<script src=<?php #echo $data["script"]; ?>></script>-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+
+<body>
