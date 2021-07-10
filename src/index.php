@@ -26,7 +26,7 @@
 
     $controller = new $controllerName();
 
-    $controller->$action();
+    $controller->$action($_REQUEST);
     exit(0);
 
     function notFound()
