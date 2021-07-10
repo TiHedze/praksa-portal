@@ -1,19 +1,22 @@
-<?php 
+<?php
 require_once __DIR__ . "/user.model.php";
-class UserService {
+class UserService
+{
     private static $instance;
     private $db;
-    
-    private final function __construct($db) { 
-        $this->db = $db;
-     }
 
-    private final function __clone() {  }
+    private final function __construct($db)
+    {
+        $this->db = $db;
+    }
+
+    private final function __clone()
+    {
+    }
 
     public static function getInstance()
     {
-        if(UserService::$instance == null)
-        {
+        if (UserService::$instance == null) {
             UserService::$instance = new UserService(DB::getInstance());
         }
 
@@ -27,18 +30,25 @@ class UserService {
 
         $row = $query->fetch();
 
-        if($row === false)
-        {
+        if ($row === false) {
             return null;
         }
 
-        return User::loginModel($row['id'], $row['name'], $row['lastname'], $row['username'], $row['password']);
+        return User::loginModel($row['id'], $row['name'], $row['lastname'], $row['username'], $row['password'], $row['role']);
     }
 
     public function createUser($user)
     {
-        $query = $this->db->prepare('INSERT INTO users (name, lastname, username, password) VALUES(:name, :lastname, :username, :password)');
-        $query->execute(array('name' => $user->name, 'lastname' => $user->lastname, 'username' => $user->username, 'password' => $user->password_hash));
+        $query = $this->db->prepare('INSERT INTO users (name, lastname, username, password, role) VALUES(:name, :lastname, :username, :password, role=:role)');
+        $query->execute(
+            array(
+                'name' => $user->name,
+                'lastname' => $user->lastname,
+                'username' => $user->username,
+                'password' => $user->password_hash,
+                'role' => $user->role
+            )
+        );
 
         return $query = $this->getUserByUsername($user->username);
     }

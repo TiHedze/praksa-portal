@@ -24,7 +24,7 @@ class LoginController
         if ($user->verifyPassword($request['password'])) {
             session_start();
             $_SESSION['user'] = $user;
-            
+
         } else {
             $error = true;
             $errorMessage = "Wrong username and/or password.";
@@ -35,7 +35,7 @@ class LoginController
     public function register($request)
     {
 
-        $user = User::registerModel($request['name'], $request['lastname'], $request['username'], $request['password']);
+        $user = User::registerModel($request['name'], $request['lastname'], $request['username'], $request['password'], $request['role']);
         try {
 
             $this->userService->createUser($user);
