@@ -23,12 +23,11 @@ if(isset($error) && $error === true)
                 </div>
                 <div class="d-flex flex-row justify-content-between">
                     <button type="submit" class="btn bg-primary">Login</button>
-                    <a class="card-link p-2 " id="register" href="" class="card-link">Sign up</a>
+                    <a class="card-link p-2" href="./../register/register.php" id="register" href="" class="card-link">Sign up</a>
                 </div>
             </form>
             <script>
                 const redirect = document.getElementById('register');
-                redirect.setAttribute('href', `${window.location}view/register/register.php`);
                 
                 const forms = document.querySelectorAll('needs-validation');
                 

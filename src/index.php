@@ -24,9 +24,12 @@
         notFound();
     }
 
+    print_r($uri);
+
     $controller = new $controllerName();
 
     $controller->$action($_REQUEST);
+
     exit(0);
 
     function notFound()
