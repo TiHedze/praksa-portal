@@ -25,7 +25,7 @@ if( isset( $_SESSION['user'] ) )
 	<nav>
 		<ul>
 			
-			<li><a href="homepage.php?rt=users">Popis svih studenata</a></li>
+			<li><a href="/../~ivocizi/praksa-portal/src/view/homepage/users_index.php">Popis svih studenata</a></li>
             <!--
 			<li><a href="index.php?rt=product/all_products">All products</a></li>
 		
