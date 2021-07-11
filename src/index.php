@@ -9,7 +9,6 @@
         $uri = explode('/', $_REQUEST['rt']);
         $controllerName = $uri[0] . 'Controller';
         $action = $uri[1];
-        print_r($uri);
     }
 
     if(!file_exists(__DIR__ . "/controller/" . $controllerName . '.php'))
@@ -24,7 +23,6 @@
         notFound();
     }
 
-    print_r($uri);
 
     $controller = new $controllerName();
 
