@@ -52,4 +52,25 @@ class UserService
 
         return $query = $this->getUserByUsername($user->username);
     }
+
+    public function getAllUsers( )
+	{
+		try
+		{
+			$db = DB::getConnection();
+			$st = $db->prepare( 'SELECT id, name, lastname, username, password, role  FROM users' );
+			$st->execute();
+		}
+		catch( PDOException $e ) { exit( 'PDO error ' . $e->getMessage() ); }
+
+		$arr = array();
+		while( $row = $st->fetch() )
+		{
+			$arr[] = new User( $row['id'], $row['name'], $row['lastname'], $row['username'], $row['password'], $row['role'] );
+		}
+
+		return $arr;
+	}
+
+
 }
