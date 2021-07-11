@@ -22,13 +22,29 @@ if(isset($error) && $error === true)
                     <input id="password" class="form-control" name="password" type="password" required>
                 </div>
                 <div class="d-flex flex-row justify-content-between">
-                    <button type="submit" class="btn bg-primary">Login</button>
-                    <a class="card-link p-2 " id="register" href="" class="card-link">Sign up</a>
+                    <div class="col-5 col-md-7">
+                        <button type="submit" class="btn bg-primary">Login</button>
+                    </div>
+                    <div class="col-7 col-md-5">
+                    <ul class="list-group">
+                    <li class="list-group-item">
+                        <a class="card-link" id="register" href="" class="card-link">Sign up for students</a>
+                        </li>
+                        <li class="list-group-item">
+                        <a class="card-link" id="register_company" href="" class="card-link">Sign up for companies</a>
+                        </li>
+                    </ul>
+                    </div>
                 </div>
             </form>
             <script>
                 const redirect = document.getElementById('register');
                 redirect.setAttribute('href', `${window.location}view/register/register.php`);
+                
+                const forms = document.querySelectorAll('needs-validation');
+
+                const redirect = document.getElementById('register_company');
+                redirect.setAttribute('href', `${window.location}view/register/company_register.php`);
                 
                 const forms = document.querySelectorAll('needs-validation');
                 
