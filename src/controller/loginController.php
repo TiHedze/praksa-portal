@@ -15,7 +15,8 @@ class LoginController
 
     public function index()
     {
-        require __DIR__ . "/../view/login/login.php";
+        
+        require __DIR__ . "/../view/homepage/homepage.php";
     }
 
     public function login($request)
