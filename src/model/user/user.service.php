@@ -1,5 +1,6 @@
 <?php
 require_once __DIR__ . "/user.model.php";
+
 class UserService
 {
     private static $instance;
@@ -16,7 +17,8 @@ class UserService
 
     public static function getInstance()
     {
-        if (UserService::$instance == null) {
+        if (UserService::$instance == null) 
+        {
             UserService::$instance = new UserService(DB::getInstance());
         }
 

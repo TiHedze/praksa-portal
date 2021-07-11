@@ -39,7 +39,6 @@ if(isset($error) && $error === true)
             </form>
             <script>
                 const redirect = document.getElementById('register');
-                redirect.setAttribute('href', `${window.location}view/register/register.php`);
                 
                 const forms = document.querySelectorAll('needs-validation');
             
