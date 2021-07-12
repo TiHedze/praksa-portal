@@ -43,7 +43,7 @@ if(isset($error) && $error === true )
 
             <script>
                 const redirect = document.getElementById('register_company');
-                redirect.setAttribute('href', `${window.location}view/register/company_register.php`);
+                //redirect.setAttribute('href', `${window.location}view/register/company_register.php`);
                 
                 const forms = document.querySelectorAll('needs-validation');
 

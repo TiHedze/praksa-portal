@@ -12,7 +12,7 @@ if (isset($error) && $error === true) {
             <h2 class="card-title">Sign Up</h2>
         </div>
         <div class="card-body">
-            <form action="./../../index.php?rt=login/company_register.php" method="POST" class="needs-validation">
+            <form action="./../../index.php?rt=company_login/company_login" method="POST" class="needs-validation">
                 <div class="mb-3">
                     <label for="name" class="form-label">Name of the company</label>
                     <input id="name" class="form-control" name="name" type="text" required>
