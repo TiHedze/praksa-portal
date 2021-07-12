@@ -14,12 +14,12 @@ class Company {
         $this->employees = $employees;
     }
 
-    public static function company_loginModel($id, $name, $password, $owner, $oib, $email, $industry, $employees)
+    public static function companyLoginModel($id, $name, $password, $owner, $oib, $email, $industry, $employees)
     {
         return new self($id, $name, $password, $owner, $oib, $email, $industry, $employees);
     }
 
-    public static function company_registerModel($name, $password, $owner, $oib, $email, $industry, $employees)
+    public static function companyRegisterModel($name, $password, $owner, $oib, $email, $industry, $employees)
     {
         $password_hash = password_hash($password, PASSWORD_ARGON2ID);
         return new self(0,$name, $password_hash, $owner, $oib, $email, $industry, $employees);

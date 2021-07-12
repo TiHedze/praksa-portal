@@ -1,4 +1,7 @@
 <?php
+
+    print_r($_REQUEST);
+
     if(!isset($_REQUEST['rt']))
     {
         $controllerName = 'loginController';

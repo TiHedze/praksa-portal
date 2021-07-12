@@ -34,7 +34,7 @@ class CompanyService
             return null;
         }
 
-        return Company::company_loginModel($row['id'], $row['name'], $row['password'], $row['owner'], $row['oib'], $row['email'], $row['industry'], $row['employees']);
+        return Company::companyLoginModel($row['id'], $row['name'], $row['password'], $row['owner'], $row['oib'], $row['email'], $row['industry'], $row['employees']);
     }
 
     public function createCompany($company)
