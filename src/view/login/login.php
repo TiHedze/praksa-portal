@@ -28,10 +28,10 @@ if(isset($error) && $error === true)
                     <div class="col-7 col-md-5">
                     <ul class="list-group">
                     <li class="list-group-item">
-                        <a class="card-link" id="register" href="" class="card-link">Sign up for students</a>
+                        <a class="card-link" id="register" href="./../register/register.php" class="card-link">Sign up for students</a>
                         </li>
                         <li class="list-group-item">
-                        <a class="card-link" id="register_company" href="" class="card-link">Sign up for companies</a>
+                        <a class="card-link" id="register_company" href="./../register/company_register.php" class="card-link">Sign up for companies</a>
                         </li>
                     </ul>
                     </div>

@@ -1,8 +1,8 @@
 <?php
 
 require_once __DIR__ . "/../model/DB.class.php";
-require_once __DIR__ . "/../model/user/company.service.php";
-require_once __DIR__ . "/../model/user/company.model.php";
+require_once __DIR__ . "/../model/company/company.service.php";
+require_once __DIR__ . "/../model/company/company.model.php";
 
 class CompanyLoginController
 {
@@ -35,7 +35,7 @@ class CompanyLoginController
     public function company_register($request)
     {
 
-        $company = company_login::registerModel($request['name'], $request['password_hash'], $request['owner'], $request['oib'], $request['email'], $request['industry'], $request['employees']);
+        $company = company_login::company_registerModel($request['name'], $request['password'], $request['owner'], $request['oib'], $request['email'], $request['industry'], $request['employees']);
         try {
 
             $this->companyService->createCompany($company);

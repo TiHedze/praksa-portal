@@ -12,30 +12,30 @@ if (isset($error) && $error === true) {
             <h2 class="card-title">Sign Up</h2>
         </div>
         <div class="card-body">
-            <form action="./../../index.php?rt=login/register" method="POST" class="needs-validation">
+            <form action="./../../index.php?rt=login/company_register.php" method="POST" class="needs-validation">
                 <div class="mb-3">
-                    <label for="username" class="form-label">Name of the company</label>
-                    <input id="username" class="form-control" name="name" type="text" required>
+                    <label for="name" class="form-label">Name of the company</label>
+                    <input id="name" class="form-control" name="name" type="text" required>
                 </div>
                 <div class="mb-3">
-                    <label for="name" class="form-label">Owner</label>
-                    <input id="name" class="form-control" name="owner" type="text" required>
+                    <label for="owner" class="form-label">Owner</label>
+                    <input id="owner" class="form-control" name="owner" type="text" required>
                 </div>
                 <div class="mb-3">
-                    <label for="lastname" class="form-label">Company OIB</label>
-                    <input id="lastname" class="form-control" name="oib" type="text" required>
+                    <label for="oib" class="form-label">Company OIB</label>
+                    <input id="oib" class="form-control" name="oib" type="text" required>
                 </div>
                 <div class="mb-3">
-                    <label for="name" class="form-label">e-mail</label>
-                    <input id="name" class="form-control" name="email" type="text" required>
+                    <label for="email" class="form-label">e-mail</label>
+                    <input id="email" class="form-control" name="email" type="text" required>
                 </div>
                 <div class="mb-3">
-                    <label for="name" class="form-label">Industry</label>
-                    <input id="name" class="form-control" name="industry" type="text" required>
+                    <label for="industry" class="form-label">Industry</label>
+                    <input id="industry" class="form-control" name="industry" type="text" required>
                 </div>
                 <div class="mb-3">
-                    <label for="name" class="form-label">Number of employees</label>
-                    <input id="name" class="form-control" name="employees" type="text" required>
+                    <label for="employees" class="form-label">Number of employees</label>
+                    <input id="employees" class="form-control" name="employees" type="text" required>
                 </div>
                 <div class="mb-3">
                     <label for="password" class="form-label mt-2">Password</label>
