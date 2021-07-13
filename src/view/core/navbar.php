@@ -21,6 +21,7 @@
 			'</form> ';
 		}
 		if( isset( $_SESSION['user']) ){
+			print_r($_SESSION);
 			echo 'Praksa';
 			echo '<br>';
 			echo 'Welcome, '.$_SESSION['user']->username. ' !';		

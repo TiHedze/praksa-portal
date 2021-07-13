@@ -1,19 +1,24 @@
 <?php
 
-require_once __DIR__ . '/../model/user/user.service.php';
+require_once __DIR__ . '/../model/profil/profil.service.php';
+require_once __DIR__ . '/../model/profil/profil.model.php';
+
 
     class ProfilController{
-        public function index(){
-            $ls = new userService;
+        private $profilService;
 
-            $title = 'Popis svih studenata';
-            $userList = $ls->getAllUsers();
-
-            require_once __DIR__ . '/../view/homepage/users_index.php';
+        public function __construct()
+        {
+            $this->profilService = ProfilService::getInstance();
         }
+
+        public function search($request)
+        {
+            print_r($request);
+        }
+
         public function profil()
         {
-
             session_start();
 
             $title = 'Profil';
