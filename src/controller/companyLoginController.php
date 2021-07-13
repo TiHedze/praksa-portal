@@ -20,10 +20,11 @@ class CompanyLoginController
 
     public function companyLogin($request)
     {
+        $name = $request['name'];
         $company = $this->companyService->getCompanyByName($request['name']);
         if ($company->verifyPassword($request['password'])) {
             session_start();
-            $_SESSION['name'] = $company;
+            $_SESSION['name'] = $request['name'];
             require __DIR__ . "/../view/homepage/homepage.php";
 
         } else {
