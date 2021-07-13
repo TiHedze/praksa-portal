@@ -15,7 +15,7 @@ class CompanyLoginController
 
     public function index()
     {
-        require __DIR__ . "/../view/login/login.php";
+        require __DIR__ . "./../../view/homepage/homepage.php";
     }
 
     public function companyLogin($request)
@@ -23,7 +23,7 @@ class CompanyLoginController
         $company = $this->companyService->getCompanyByName($request['name']);
         if ($company->verifyPassword($request['password'])) {
             session_start();
-            $_SESSION['name'] = $name;
+            $_SESSION['name'] = $company;
             require __DIR__ . "/../view/homepage/homepage.php";
 
         } else {
@@ -43,9 +43,10 @@ class CompanyLoginController
             $this->companyLogin($request);
         } catch (PDOException $e) {
 
+            print_r($e);
             $error = true;
-            $errorMessage = "Username already exists!";
-            require __DIR__ . "/../view/register/companyRegister.php";
+            $errorMessage = "Name already exists!";
+            require __DIR__ . "/../view/companyRegister/companyRegister.php";
         }
     }
 

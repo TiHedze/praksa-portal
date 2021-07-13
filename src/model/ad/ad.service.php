@@ -1,5 +1,5 @@
 <?php
-require_once __DIR__ . "/ad.class.php";
+require_once __DIR__ . "/ad.model.php";
 require_once __DIR__ . "/../DB.class.php";
 
 

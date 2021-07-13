@@ -25,6 +25,7 @@ class LoginController
         if ($user->verifyPassword($request['password'])) {
             session_start();
             $_SESSION['user'] = $user;
+            require __DIR__ . "/../view/homepage/homepage.php";
 
         } else {
             $error = true;

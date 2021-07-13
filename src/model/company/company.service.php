@@ -43,12 +43,12 @@ class CompanyService
         $query->execute(
             array(
                 'name' => $company->name,
-                'password' => $company->password,
+                'password' => $company->password_hash,
                 'owner' => $company->owner,
                 'oib' => $company->oib,
                 'email' => $company->email,
                 'industry' => $company->industry,
-                'employees' => $company->employees,
+                'employees' => $company->employees
             )
         );
 
