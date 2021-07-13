@@ -13,7 +13,7 @@ if(isset($error) && $error === true )
             <h2 class = "card-title">Company login</h2>
         </div>
         <div class="card-body">
-            <form action="index.php?rt=companyLogin/companyLogin" method = "POST" 
+            <form action="./../../index.php?rt=companyLogin/companyLogin" method = "POST" 
             class= "needs-validation">
                 <div class="mb-3">
                     <label for="name" class="form-label">Name of the company:</label>
@@ -27,6 +27,9 @@ if(isset($error) && $error === true )
                 <div class="d-flex flex-row justify-content-between">
                     <div class="col-5 col-md-7">
                         <button type="submit" class="btn bg-primary">Login</button>
+                        <br>
+                        <br>
+                        <a class="card-link" id="login" href="./../login/login.php">Student login</a>
                     </div>
                     <div class="col-7 col-md-5">
                     <ul class="list-group">
@@ -34,7 +37,7 @@ if(isset($error) && $error === true )
                         <a class="card-link" id="register" href="./../register/register.php" class="card-link">Sign up for students</a>
                         </li>
                         <li class="list-group-item">
-                        <a class="card-link" id="register_company" href="./../register/companyRegister.php" class="card-link">Sign up for companies</a>
+                        <a class="card-link" id="register_company" href="./../companyRegister/companyRegister.php" class="card-link">Sign up for companies</a>
                         </li>
                     </ul>
                     </div>

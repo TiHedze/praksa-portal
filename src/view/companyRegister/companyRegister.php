@@ -46,6 +46,10 @@ if (isset($error) && $error === true) {
                     <input id="password-confirm" class="form-control" type="password" required>
                 </div>
                 <button id="submit" type="submit" class="btn bg-primary">Sign up</button>
+                <br>
+                <br>
+                <a class="card-link" id="companyLogin" href="./../companyLogin/companyLogin.php">Company login</a>
+                <a class="card-link" id="login" href="./../login/login.php">Student login</a>
             </form>
 
             <script>

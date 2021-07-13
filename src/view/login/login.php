@@ -9,10 +9,10 @@ if(isset($error) && $error === true)
 <div class="container w-25">
     <div class="card mt-5 rounded-4">
         <div class="card-header bg-primary">
-            <h2 class="card-title">Login</h2>
+            <h2 class="card-title">Student login</h2>
         </div>
         <div class="card-body">
-            <form action="index.php?rt=login/login" method="POST" class="needs-validation">
+            <form action="./../../index.php?rt=login/login" method="POST" class="needs-validation">
                 <div class="mb-3">
                     <label for="username" class="form-label">Username</label>
                     <input id="username" class="form-control" name="username" type="text" required>
@@ -24,6 +24,9 @@ if(isset($error) && $error === true)
                 <div class="d-flex flex-row justify-content-between">
                     <div class="col-5 col-md-7">
                         <button type="submit" class="btn bg-primary">Login</button>
+                        <br>
+                        <br>
+                        <a class="card-link" id="companyLogin" href="./../companyLogin/companyLogin.php">Company login</a>
                     </div>
                     <div class="col-7 col-md-5">
                     <ul class="list-group">
@@ -31,7 +34,7 @@ if(isset($error) && $error === true)
                         <a class="card-link" id="register" href="./../register/register.php" class="card-link">Sign up for students</a>
                         </li>
                         <li class="list-group-item">
-                        <a class="card-link" id="register_company" href="./../register/company_register.php" class="card-link">Sign up for companies</a>
+                        <a class="card-link" id="register_company" href="./../companyRegister/companyRegister.php" class="card-link">Sign up for companies</a>
                         </li>
                     </ul>
                     </div>
