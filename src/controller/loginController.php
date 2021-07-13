@@ -24,7 +24,7 @@ class LoginController
         $user = $this->userService->getUserByUsername($request['username']);
         if ($user->verifyPassword($request['password'])) {
             session_start();
-            $_SESSION['user'] = $request['username'];
+            $_SESSION['user'] = $user;
             require __DIR__ . "/../view/homepage/homepage.php";
 
         } else {

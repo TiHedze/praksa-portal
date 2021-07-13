@@ -55,21 +55,6 @@ class UserService
         return $query = $this->getUserByUsername($user->username);
     }
 
-    public function add_profil_desc($age, $college, $grades, $email){
-		$users= UserService::getUserByUsername($user);
-
-		while( $row = $st->fetch() )
-			$users[] = new User( $row['id'], $row['username'], $row['password_hash'], $row['email'], $row['registration_sequence'], $row['has_registered']);
-
-		foreach( $users as $user)
-			if( $user->username == $_SESSION['username'])
-				$value = $user->id;
-
-		$st = $db->prepare( 'UPDATE users SET age = :age, college = :college, grades = :grades, email = :email WHERE id_user = :id_user' );
-			$st->execute( array( 'id_product'=>$id_product,'id_user' => $value, 'rating' => $Ocjena, 'comment' => $Komentar) );
-		return true;
-	}
-
     public function getAllUsers( )
 	{
 		try

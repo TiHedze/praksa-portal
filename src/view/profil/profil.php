@@ -1,11 +1,17 @@
-<?php require_once __DIR__ . "/../core/_header.php";
-require_once __DIR__ . "/../core/navbar.php";?>
+<?php
+
+$title = "Add new ad";
+session_start();
+
+require_once __DIR__ . "/../core/_header.php";
+require_once __DIR__ . "/../core/navbar.php";
+?>
 
 
 <div class="card" id=; ?>
     <div class="card-body">
         <h5 class="card-title">Upotpuni svoj profil: </h5>
-            <form action="index.php?rt=user/profil" method="post">
+            <form action="index.php?rt=profil/profil" method="post">
                 <div class="mb-3">
                     <label for="age" class="form-label">Age:</label>
                     <input id="age" class="form-control" name="age" type="text">
