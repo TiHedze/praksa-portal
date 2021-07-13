@@ -1,5 +1,6 @@
 <?php
 
+require_once __DIR__ . "/../model/DB.class.php";
 require_once __DIR__ . '/../model/profil/profil.service.php';
 require_once __DIR__ . '/../model/profil/profil.model.php';
 
@@ -22,7 +23,7 @@ require_once __DIR__ . '/../model/profil/profil.model.php';
             session_start();
 
             $title = 'Profil';
-            $ls = new profilService;
+            $ls = profilService::getInstance();
             if( isset( $_POST['age']) && isset( $_POST['college']) && isset( $_POST['grades'] ) && isset( $_POST['email'] )){
                     //require_once __DIR__ . '/../view/profil/profil.php';
                     $check = $ls->createProfil( $_SESSION['user']->id, $_POST['age'], $_POST['college'], $_POST['grades'], $_POST['email'] );

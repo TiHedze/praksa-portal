@@ -13,7 +13,7 @@ class ProfilModel {
         $this->email = $email;
     }
 
-    public static function retriveProfil($id, $student_id, $age, $college, $grades, $email)
+    public static function retrieveProfil($id, $student_id, $age, $college, $grades, $email)
     {
         return new self($id, $student_id, $age, $college, $grades, $email);
     }

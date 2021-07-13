@@ -56,13 +56,13 @@ class ProfilService
 
         $row = $query->fetch();
 
-        return ProfilModel::retrieveAd(
+        return ProfilModel::retrieveProfil(
             $row['id'],
-            $row['title'],
-            $row['company_id'],
-            $row['text'],
-            $row['company_name'],
-            $row['salary']
+            $row['student_id'],
+            $row['age'],
+            $row['college'],
+            $row['grades'],
+            $row['email']
         );
     }
 
@@ -77,7 +77,11 @@ class ProfilService
             return null;
         }
 
-        return ProfilModel::retriveProfil($row['id'], $row['student_id'], $row['age'], $row['college'], $row['grades'], $row['email']);
+        $this->profilModel = ProfilModel::getInstance();
+
+        $profil = $this->profilModel->retrieveProfil($row['id'], $row['student_id'], $row['age'], $row['college'], $row['grades'], $row['email']);
+
+        return $profil;
     }
 /*
     public function add_profil_desc($student_id, $age, $college, $grades, $email)

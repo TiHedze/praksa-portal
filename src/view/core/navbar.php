@@ -8,6 +8,7 @@
 			echo '<a href="./../src/view/login/login.php" class="navbar-brand">Prijava</a>';
 		}
 		if( isset( $_SESSION['cname'] ) ){
+			print_r($_SESSION);
 			echo 'Praksa';
 			echo '<br>';
 			echo 'Welcome, '.$_SESSION['cname']. ' !';	
@@ -24,7 +25,7 @@
 			print_r($_SESSION);
 			echo 'Praksa';
 			echo '<br>';
-			echo 'Welcome, '.$_SESSION['user']->username. ' !';		
+			echo 'Welcome, '.$_SESSION['username']. ' !';		
 			
 			//echo '<a class="navbar-brand"  href="./../src/view/homepage/homepage.php">Početna</a>';
 
