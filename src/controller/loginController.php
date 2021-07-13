@@ -52,6 +52,8 @@ class LoginController
 
     public function logout()
     {
+        session_start();
+        
         $title = 'Uspjesno ste se odjavili!';
 		session_unset();
         session_destroy();

@@ -12,6 +12,7 @@
 			echo '<br>';
 			echo 'Welcome, '.$_SESSION['cname']. ' !';	
 					
+			//echo '<a class="navbar-brand"  href="./../src/view/homepage/homepage.php">Početna</a>';
 			echo '<a class="navbar-brand"  href="./../src/view/ads/addNewAd.php">Stvori oglas</a>';
 			echo '<a class="navbar-brand"  href="./../src/view/ads/myAds.php">Pogledaj svoje oglase</a>';
 
@@ -24,6 +25,8 @@
 			echo '<br>';
 			echo 'Welcome, '.$_SESSION['user']. ' !';		
 			
+			//echo '<a class="navbar-brand"  href="./../src/view/homepage/homepage.php">Početna</a>';
+
 			echo '<form class="d-flex" method="POST" action="./index.php?rt=login/logout">' . 
 				'<button class="btn bg-white" type="submit">Odjava</button>' . 
 			'</form> ';

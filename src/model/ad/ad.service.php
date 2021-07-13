@@ -125,7 +125,7 @@ class AdService
             );
         }
 
-        if( isset( $_SESSION['name'] ) ){
+        if( isset( $_SESSION['cname'] ) ){
             foreach( $companies as $company)
             if( $company->name == $_SESSION['cname']){
                 $value = $company->id;
