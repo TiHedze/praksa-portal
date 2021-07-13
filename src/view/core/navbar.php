@@ -3,6 +3,7 @@
   <div class="container-fluid">
     <a href="./../src/view/login/login.php" class="navbar-brand">Profil</a>
 	<a class="navbar-brand"  href="./../src/view/ads/addNewAd.php">Stvori oglas</a>
+	<a class="navbar-brand"  href="./../src/view/ads/myAds.php">Pogledaj svoje oglase</a>
     <form class="d-flex" method="POST" action="index.php?rt=ad/search">
       <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="companyName">
       <button class="btn bg-white" type="submit">Search</button>
