@@ -22,7 +22,7 @@ class AdController
 		$title = 'Add new ad';
 		$ls = AdService::getInstance();
 		if( isset( $_POST['adTitle']) && isset( $_POST['adText']) && isset( $_POST['adSalary'] ) ){
-			$check = $ls->add_new_ad( $_POST['adTitle'], $_POST['adText'], $_POST['adSalary'] );
+			$check = $ls->addNewAd( $_POST['adTitle'], $_POST['adText'], $_POST['adSalary'] );
 		if( !$check ){
 				$title = 'Oglas vec postoji!';
 				require_once __DIR__ . '/../view/ads/add_new_ad.php';
@@ -35,7 +35,23 @@ class AdController
 		}
 		else
 				require_once __DIR__ . '/../view/ads/add_new_ad.php';
+	}
+
+	public function myAds()
+	{
+		$ls = AdService::getInstance();
+
+		if( !isset( $_SESSION['name'] ) || !preg_match( '/^[a-zA-Z ,-.]+$/', $_SESSION['name'] ) )
+		{
+			//header( 'Location: index.php?rt=books/search');
+			exit();
 		}
+
+		$title = 'Ads by company ' . $_SESSION['name'] ;
+		$myAdsList= $ls->getAdsByCompany( $_SESSION['name'] );
+
+		require_once __DIR__ . '/../view/myAds.php';
+	}
 
 
 }

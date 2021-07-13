@@ -137,4 +137,21 @@ class AdService
 
         return true;
     }
+
+    function getAdsByCompany( $name )
+	{
+		$ads = [];
+		$myads = [];
+
+        $company = CompanyService::getCompanyByName($name);
+
+        $ads = AdService::getAds();
+
+        foreach( $ads as $ad)
+        if($ad->company_name === $name){
+            $myads[] = retrieveAd($ad->id, $ad->title, $ad->company_id, $ad->text, $ad->company_name , $ad->salary);
+        }
+
+		return $myads;
+	}
 }
