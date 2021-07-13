@@ -20,18 +20,19 @@
 				'<button class="btn bg-white" type="submit">Odjava</button>' . 
 			'</form> ';
 		}
-		if( isset( $_SESSION['user']->username) ){
+		if( isset( $_SESSION['user']) ){
 			echo 'Praksa';
 			echo '<br>';
 			echo 'Welcome, '.$_SESSION['user']->username. ' !';		
 			
 			//echo '<a class="navbar-brand"  href="./../src/view/homepage/homepage.php">Početna</a>';
 
+			echo '<a class="navbar-brand"  href="./../src/view/profil/profil.php">Upotpuni svoj profil</a>';
+			echo '<a class="navbar-brand"  href="./../src/view/ads/myAds.php">Pogledaj svoje prijave</a>';
+
 			echo '<form class="d-flex" method="POST" action="./index.php?rt=login/logout">' . 
 				'<button class="btn bg-white" type="submit">Odjava</button>' . 
 			'</form> ';
-
-			echo '<a class="navbar-brand"  href="./../src/view/ads/myAds.php">Pogledaj svoje prijave</a>';
 			
 		}
 	?>

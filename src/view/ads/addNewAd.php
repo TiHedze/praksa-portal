@@ -1,4 +1,5 @@
 <?php 
+
 $title = "Add new ad";
 session_start();
 

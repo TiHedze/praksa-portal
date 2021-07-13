@@ -11,7 +11,11 @@ require_once __DIR__ . '/../model/user/user.service.php';
 
             require_once __DIR__ . '/../view/homepage/users_index.php';
         }
-        public function profil(){
+        public function profil()
+        {
+
+            session_start();
+
             $title = 'Profil';
             $ls = new profilService;
             if( isset( $_POST['age']) && isset( $_POST['college']) && isset( $_POST['grades'] ) && isset( $_POST['email'] )){
