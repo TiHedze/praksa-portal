@@ -44,18 +44,34 @@ class AdController
 	{
 		$ls = AdService::getInstance();
 
-		if( !isset( $_SESSION['name'] ) || !preg_match( '/^[a-zA-Z ,-.]+$/', $_SESSION['name'] ) )
+		if( !isset( $_SESSION['cname'] ) || !preg_match( '/^[a-zA-Z ,-.]+$/', $_SESSION['cname'] ) )
 		{
 			//header( 'Location: index.php?rt=books/search');
 			exit();
 		}
 
-		$title = 'Ads by company ' . $_SESSION['name'] ;
-		$myAdsList= $ls->getAdsByCompany( $_SESSION['name'] );
+		$title = 'Ads by company ' . $_SESSION['cname'] ;
+		$myAdsList= $ls->getAdsByCompany( $_SESSION['cname'] );
 
-		require_once __DIR__ . '/../view/myAds.php';
+		require_once __DIR__ . '/../view/ads/myAds.php';
 	}
 
+	public function adSearch()
+	{
+		$ls = AdService::getInstance();
+
+		if( !isset( $_POST['company_name']  ) )
+		{
+			$title = 'Popis svih oglasa tvrtke';
+			require_once __DIR__ . '/../view/homepage/homepage.php';
+			exit();
+		}
+		else{
+		$title = 'Popis svih oglasa tvrtke ' . $_POST['company_name'];
+		$adCompanyNameList = $ls->getAdsByCompany( $_POST['company_name'] );
+
+		require_once __DIR__ . './../view/ads/adSearch.php';}
+	}
 
 }
 

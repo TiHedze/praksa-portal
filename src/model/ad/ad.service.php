@@ -10,6 +10,7 @@ class AdService
 
     private static $instance;
     private $db;
+    private $companyService;
 
     private final function __construct($db)
     {
@@ -35,7 +36,7 @@ class AdService
             ->prepare('SELECT name FROM company WHERE id=:id')
             ->execute(array('id' => $companyId));
 
-        $companyName = $query->fetch()['name'];
+        //$companyName = $query->fetch()['name'];
 
         $query = $this->db
             ->prepare('INSERT INTO ads (title, company_id, company_name, text, salary) VALUES (:title, :company_id, :company_name, :text, :salary)')
@@ -55,8 +56,8 @@ class AdService
     public function getAdById($id)
     {
         $query = $this->db
-            ->prepare('SELECT * FROM ads WHERE id=:id')
-            ->execute(array('id' => $id));
+            ->prepare('SELECT * FROM ads WHERE id=:id');
+        $success = $query->execute(array('id' => $id));
 
         $row = $query->fetch();
 
@@ -98,7 +99,7 @@ class AdService
 
     public function addNewAd( $adTitle, $adText, $adSalary )
     {
-        print_r($_SESSION['name'] );
+        //print_r($_SESSION['cname'] );
 
         $companies = array();
         $ads = array();
@@ -126,12 +127,11 @@ class AdService
 
         if( isset( $_SESSION['name'] ) ){
             foreach( $companies as $company)
-            if( $company->name == $_SESSION['name']){
+            if( $company->name == $_SESSION['cname']){
                 $value = $company->id;
                 $name = $company->name;
             }
-            print_r('tu sam' );
-            $ad = AdModel::createAd($adTitle, $value, $adText, $name, $adSalary);
+            $ad = AdService::createAd($adTitle, $value, $adText, $name, $adSalary);
         }
         else{
             echo'Nemam session name.';
@@ -140,18 +140,20 @@ class AdService
         return true;
     }
 
-    function getAdsByCompany( $name )
+    function getAdsByCompany( $company_name )
 	{
 		$ads = [];
 		$myads = [];
 
-        $company = CompanyService::getCompanyByName($name);
+        $this->companyService = CompanyService::getInstance();
+
+        $company = $this->companyService->getCompanyByName($company_name);
 
         $ads = AdService::getAds();
 
         foreach( $ads as $ad)
-        if($ad->company_name === $name){
-            $myads[] = retrieveAd($ad->id, $ad->title, $ad->company_id, $ad->text, $ad->company_name , $ad->salary);
+        if($ad->companyName === $company_name){
+            $myads[] = AdModel::retrieveAd($ad->id, $ad->title, $ad->companyId, $ad->text, $ad->companyName , $ad->salary);
         }
 
 		return $myads;

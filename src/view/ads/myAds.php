@@ -1,9 +1,46 @@
 <?php
+session_start();
+$title = "My ads";
+require_once __DIR__ . "/../../model/ad/ad.service.php";
+
+
+$ads = AdService::getInstance()->getAdsByCompany( $_SESSION['cname'] );
 require_once __DIR__ . "/../core/_header.php";
-require_once __DIR__ . "/../core/navbar.php"; 
+require_once __DIR__ . "/../core/navbar.php";
+if (count($ads) > 0) {
+    foreach ($ads as $ad) {
+        require __DIR__ . "/../homepage/ad.component.php";
+    }
+} else {
+    $errorMessage = "No ads available";
+    require __DIR__ . "/../login/login.error.php";
+}
+?>
+<script src="./ad.js"></script>
+<?php
+require_once __DIR__ . "/../core/_footer.php";
 ?>
 
-<?php
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--
+require_once __DIR__ . "/../core/_header.php";
+require_once __DIR__ . "/../core/navbar.php"; 
+
 	if( $myAdsList == [] ){
 		echo 'You do not have any ads on your name!';
 		exit(0);
@@ -16,13 +53,12 @@ require_once __DIR__ . "/../core/navbar.php";
 	<th>Description</th>
 	<th>Salary</th>
   </tr>
-	<?php
+	<?php /*
   foreach ($myAdsList as $ad ) {
     echo '<tr>' . '<td><a href="index.php?rt=ad/'.$ad->title.'">' . $ad->title . '</a></td>'
 	 . '<td>' . $ad->text . '</td>'. '<td>' . $ad->salary . '</td>' . '</tr>';
   }
-
+*/
    ?>
 </table>
-
-<?php require_once __DIR__ . '/_footer.php'; ?>
+*/

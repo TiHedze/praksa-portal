@@ -23,9 +23,9 @@ class AdModel {
         return new self($id, $title, $companyId, $text, $companyName, $salary);
     }
 
-    public function __get($name)
+    public function __get($prop)
     {
-        return $this->$name;
+        return $this->$prop;
     }
 }
 

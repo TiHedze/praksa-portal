@@ -24,7 +24,7 @@ class LoginController
         $user = $this->userService->getUserByUsername($request['username']);
         if ($user->verifyPassword($request['password'])) {
             session_start();
-            $_SESSION['user'] = $user;
+            $_SESSION['user'] = $request['username'];
             require __DIR__ . "/../view/homepage/homepage.php";
 
         } else {
@@ -52,5 +52,9 @@ class LoginController
 
     public function logout()
     {
+        $title = 'Uspjesno ste se odjavili!';
+		session_unset();
+        session_destroy();
+		require_once __DIR__ . "/../view/homepage/homepage.php";
     }
 }

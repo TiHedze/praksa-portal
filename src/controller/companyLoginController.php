@@ -24,7 +24,7 @@ class CompanyLoginController
         $company = $this->companyService->getCompanyByName($request['name']);
         if ($company->verifyPassword($request['password'])) {
             session_start();
-            $_SESSION['name'] = $request['name'];
+            $_SESSION['cname'] = $request['name'];
             require __DIR__ . "/../view/homepage/homepage.php";
 
         } else {
@@ -53,5 +53,11 @@ class CompanyLoginController
 
     public function logout()
     {
+        session_start();
+
+        $title = 'Uspjesno ste se odjavili!';
+		session_unset();
+        session_destroy();
+		require_once __DIR__ . "/../view/homepage/homepage.php";
     }
 }
