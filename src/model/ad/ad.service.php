@@ -29,7 +29,7 @@ class AdService
         return AdService::$instance;
     }
 
-    public function createAd($title, $companyId, $text, $salary)
+    public function createAd($title, $companyId, $text, $companyName, $salary)
     {
         $query = $this->db
             ->prepare('SELECT name FROM company WHERE id=:id')
@@ -98,6 +98,8 @@ class AdService
 
     public function addNewAd( $adTitle, $adText, $adSalary )
     {
+        print_r($_SESSION['name'] );
+
         $companies = array();
         $ads = array();
 
@@ -128,8 +130,8 @@ class AdService
                 $value = $company->id;
                 $name = $company->name;
             }
-
-            $ad = AdModel::createAd($adTitle, $value, $adText, $adSalary);
+            print_r('tu sam' );
+            $ad = AdModel::createAd($adTitle, $value, $adText, $name, $adSalary);
         }
         else{
             echo'Nemam session name.';

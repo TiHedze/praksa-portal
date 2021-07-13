@@ -18,7 +18,10 @@ class AdController
         print_r($request);
     }
 
-    public function addNewAd( ){
+    public function addNewAd( )
+	{
+		session_start();
+
 		$title = 'Add new ad';
 		$ls = AdService::getInstance();
 		if( isset( $_POST['adTitle']) && isset( $_POST['adText']) && isset( $_POST['adSalary'] ) ){
