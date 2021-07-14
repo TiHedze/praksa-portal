@@ -158,4 +158,19 @@ class AdService
 
 		return $myads;
 	}
+    function apply()
+    {
+        $data = json_decode(file_get_contents('php://input'), true);
+
+        header('Content-Type: application/json; charset: utf-8');
+
+        $adId = $data['adId'];
+        $userId = $data['userId'];
+
+        $query = $this->db->prepare('INSERT INTO ad_application (ad_id, user_id) VALUES (:adId, :userId)');
+        $query->execute(array("adId" => $adId, "userId" => $userId));
+        
+        
+        echo json_encode(array("userId" => $userId, "adId" =>$adId));
+    }
 }

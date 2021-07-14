@@ -1,22 +1,23 @@
 document.addEventListener('DOMContentLoaded', () => {
     const buttons = document.getElementsByTagName("button");
     for (let button of buttons) {
-        button.addEventListener('click',)
+        button.addEventListener('click', applyToAd)
     }
 })
 
-const applyToAd = (event) => {
+const applyToAd = async (event) => {
     if (event.target.disabled === true) {
         return;
     }
 
     const adId = event.target.parentNode.parentNode.getAttribute('id');
-    const userId = event.target.getAttribute('id');
+    const userId = event.target.getAttribute('value');
 
-    const request = new Request('./../../index.php?rt=ad/apply', { method: 'POST', body: JSON.stringify({ userId, adId }) });
+    const request = new Request('./index.php?rt=ad/apply', { method: 'POST', body: JSON.stringify({ userId, adId }) });
 
     fetch(request)
         .then(response => {
+            console.log(response.json());
             const successAlert = document.createElement('div');
             successAlert.classList.add('alert', 'alert-success', 'd-flex', 'flex-row', 'justify-content-center');
             successAlert.textContent = 'Successfully applied to the job!';

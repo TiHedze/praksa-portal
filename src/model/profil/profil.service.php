@@ -68,7 +68,7 @@ class ProfilService
 
     public function getProfilByStuudentId($student_id)
     {
-        $query = $this->db->prepare('SELECT * FROM profils WHERE student_id=:student_id');
+        $query = $this->db->prepare('SELECT * FROM profil WHERE student_id=:student_id');
         $query->execute(array('student_id' => $student_id));
 
         $row = $query->fetch();

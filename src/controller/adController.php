@@ -73,6 +73,10 @@ class AdController
 		require_once __DIR__ . './../view/ads/adSearch.php';}
 	}
 
+	public function apply()
+	{
+		AdService::getInstance()->apply();
+	}
 }
 
 ?>
