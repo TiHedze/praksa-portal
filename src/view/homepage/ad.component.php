@@ -13,5 +13,18 @@
                 echo "value=" . $_SESSION['user']->id;
             }
          ?>>Apply to this position!</button>
+         <?php 
+            if( isset($_SESSION['cname'])) {
+                require_once __DIR__ . '/../../model/company/company.service.php';
+                $students = CompanyService::getInstance()->getAppliedStudents($ad->id, $_SESSION['cid']);
+                if(count($students) > 0)
+                {
+                    echo '<ul>';
+                        foreach ($students as $student)
+                            echo '<li>' . $student->name . ' ' . $student->lastname . '</li>';
+                    echo '</ul>';
+                }
+            }
+         ?>
     </div>
 </div>

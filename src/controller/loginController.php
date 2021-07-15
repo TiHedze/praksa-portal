@@ -22,10 +22,12 @@ class LoginController
     public function login($request)
     {
         $user = $this->userService->getUserByUsername($request['username']);
-        if ($user->verifyPassword($request['password'])) {
+        if ( isset($user) && $user->verifyPassword($request['password'])) {
             session_start();
-            $_SESSION['user'] = $user;
+            $_SESSION['user'] = ( $user );
             $_SESSION['username'] = $request['username'];
+            $_SESSION['uname'] = $user->name;
+            $_SESSION['lastname'] = $user->lastname;
             require __DIR__ . "/../view/homepage/homepage.php";
 
         } else {

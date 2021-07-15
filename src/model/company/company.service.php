@@ -1,5 +1,7 @@
 <?php
 require_once __DIR__ . "/company.model.php";
+require_once __DIR__ . "/../user/user.model.php";
+
 class CompanyService
 {
     private static $instance;
@@ -54,4 +56,18 @@ class CompanyService
 
         return $query = $this->getCompanyByName($company->name);
     }
+
+    public function getAppliedStudents($adId, $companyId)
+    {
+        $query = $this->db->prepare('SELECT DISTINCT users.name, users.lastname, users.id, users.username, users.password, users.role FROM users JOIN ad_application ON users.id = ad_application.user_id JOIN ads ON ad_application.ad_id = ads.id WHERE ads.company_id = :companyId AND ad_application.ad_id = :adId;');
+        $query->execute(array("companyId"=> $companyId, "adId"=>$adId));
+        $students = [];
+        while($row = $query->fetch())
+        {
+            $students[] = User::loginModel( $row['id'], $row['name'], $row['lastname'], $row['username'], $row['password'], $row['role'] );
+        }
+
+        return $students;
+    }
+
 }

@@ -16,12 +16,22 @@ const applyToAd = async (event) => {
     const request = new Request('./index.php?rt=ad/apply', { method: 'POST', body: JSON.stringify({ userId, adId }) });
 
     fetch(request)
-        .then(response => {
-            console.log(response.json());
-            const successAlert = document.createElement('div');
-            successAlert.classList.add('alert', 'alert-success', 'd-flex', 'flex-row', 'justify-content-center');
-            successAlert.textContent = 'Successfully applied to the job!';
-            event.target.parentNode.appendChild(successAlert);
+        .then(async(response) => {
+            //console.log(response.json());
+            if( response.status !== 200)
+            {
+                const errorAlert = document.createElement('div');
+                errorAlert.classList.add('alert', 'alert-danger', 'd-flex', 'flex-row', 'justify-content-center');
+                errorAlert.textContent = await response.json().then(data => data.error);
+                event.target.parentNode.appendChild(errorAlert);
+            }
+            else
+            {
+                const successAlert = document.createElement('div');
+                successAlert.classList.add('alert', 'alert-success', 'd-flex', 'flex-row', 'justify-content-center');
+                successAlert.textContent = 'Successfully applied to the job!';
+                event.target.parentNode.appendChild(successAlert);
+            }
         })
         .catch(err => {
             const errorAlert = document.createElement('div');

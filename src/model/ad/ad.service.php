@@ -151,7 +151,7 @@ class AdService
 
         $ads = AdService::getAds();
 
-        foreach( $ads as $ad)
+        foreach( $ads as $ad) 
         if($ad->companyName === $company_name){
             $myads[] = AdModel::retrieveAd($ad->id, $ad->title, $ad->companyId, $ad->text, $ad->companyName , $ad->salary);
         }
@@ -167,10 +167,20 @@ class AdService
         $adId = $data['adId'];
         $userId = $data['userId'];
 
-        $query = $this->db->prepare('INSERT INTO ad_application (ad_id, user_id) VALUES (:adId, :userId)');
-        $query->execute(array("adId" => $adId, "userId" => $userId));
-        
-        
-        echo json_encode(array("userId" => $userId, "adId" =>$adId));
+        $query = $this->db->prepare('SELECT * FROM ad_application WHERE ( ad_id = :adId AND user_id = :userId)');
+        $exist = $query->execute(array("adId" => $adId, "userId" => $userId));
+        if ( $query->fetch() )
+        {
+            http_response_code(404);
+            echo json_encode(array('error'=>'Već ste prijavljeni na taj oglas. '));
+        }
+        else
+        {
+            $query = $this->db->prepare('INSERT INTO ad_application (ad_id, user_id) VALUES (:adId, :userId)');
+            $query->execute(array("adId" => $adId, "userId" => $userId));
+            
+            
+            echo json_encode(array("userId" => $userId, "adId" =>$adId));
+        }
     }
 }

@@ -16,7 +16,7 @@ if (count($ads) > 0) {
     require __DIR__ . "/../login/login.error.php";
 }
 ?>
-<script src="./ad.js"></script>
+<script src="./../view/homepage/ad.js"></script>
 <?php
 require_once __DIR__ . "/../core/_footer.php";
 ?>

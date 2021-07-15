@@ -32,20 +32,32 @@ class ProfilService
 
     public function createProfil($student_id, $age, $college, $grades, $email)
     {
+        session_start();
 
-        $query = $this->db
-            ->prepare('INSERT INTO profil (student_id, age, college, grades, email) VALUES (:student_id, :age, :college, :grades, :email)')
-            ->execute(array(
-                'student_id' => $student_id,
-                'age' => $age,
-                'college' => $college,
-                'grades' => $grades,
-                'email' => $email
-            ));
+        $sid = $_SESSION['user']->id;
+        $query = $this->db->prepare('SELECT * FROM profil WHERE ( student_id = :sid )');
+        $exist = $query->execute(array('student_id' => $sid,));
+        $row = $query->fetch();
 
-        $profilId = $this->db->lastInsertId('id');
+        if ($row !== false) {
+            return false;
+        }
+        else
+        {
+            $query = $this->db
+                ->prepare('INSERT INTO profil (student_id, age, college, grades, email) VALUES (:student_id, :age, :college, :grades, :email)')
+                ->execute(array(
+                    'student_id' => $student_id,
+                    'age' => $age,
+                    'college' => $college,
+                    'grades' => $grades,
+                    'email' => $email
+                ));
 
-        return $this->getProfilById($profilId);
+            $profilId = $this->db->lastInsertId('id');
+            return true;
+            //return $this->getProfilById($profilId);
+        }
     }
 
     public function getProfilById($id)
@@ -55,6 +67,28 @@ class ProfilService
         $success = $query->execute(array('id' => $id));
 
         $row = $query->fetch();
+
+        return ProfilModel::retrieveProfil(
+            $row['id'],
+            $row['student_id'],
+            $row['age'],
+            $row['college'],
+            $row['grades'],
+            $row['email']
+        );
+    }
+
+    public function checkProfilById($student_id)
+    {
+        $query = $this->db
+            ->prepare('SELECT * FROM profil WHERE student_id=:student_id');
+        $success = $query->execute(array('student_id' => $student_id));
+
+        $row = $query->fetch();
+
+        if ($row === false) {
+            return false;
+        }
 
         return ProfilModel::retrieveProfil(
             $row['id'],
@@ -77,9 +111,9 @@ class ProfilService
             return null;
         }
 
-        $this->profilModel = ProfilModel::getInstance();
+        //$this->profilModel = ProfilModel::getInstance();
 
-        $profil = $this->profilModel->retrieveProfil($row['id'], $row['student_id'], $row['age'], $row['college'], $row['grades'], $row['email']);
+        $profil = ProfilModel::retrieveProfil($row['id'], $row['student_id'], $row['age'], $row['college'], $row['grades'], $row['email']);
 
         return $profil;
     }
