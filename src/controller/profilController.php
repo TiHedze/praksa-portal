@@ -31,6 +31,7 @@ require_once __DIR__ . '/../model/profil/profil.model.php';
                         //require_once __DIR__ . '/../view/profil/profil.php';
                         $check = $ls->createProfil( $_SESSION['user']->id, $_POST['age'], $_POST['college'], $_POST['grades'], $_POST['email'] );
                     if( !$check ){
+                            //print_r('tu sam');
                             $title = 'Opis već postoji!';
                             require_once __DIR__ . '/../view/profil/showProfil.php';
                         }

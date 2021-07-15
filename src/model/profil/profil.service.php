@@ -32,11 +32,11 @@ class ProfilService
 
     public function createProfil($student_id, $age, $college, $grades, $email)
     {
-        session_start();
+        //session_start();
 
         $sid = $_SESSION['user']->id;
-        $query = $this->db->prepare('SELECT * FROM profil WHERE ( student_id = :sid )');
-        $exist = $query->execute(array('student_id' => $sid,));
+        $query = $this->db->prepare('SELECT * FROM profil WHERE ( student_id = :student_id )');
+        $exist = $query->execute(array('student_id' => $sid));
         $row = $query->fetch();
 
         if ($row !== false) {
@@ -55,8 +55,8 @@ class ProfilService
                 ));
 
             $profilId = $this->db->lastInsertId('id');
-            return true;
-            //return $this->getProfilById($profilId);
+            //return true;
+            return $this->getProfilById($profilId);
         }
     }
 
@@ -117,31 +117,28 @@ class ProfilService
 
         return $profil;
     }
-/*
-    public function add_profil_desc($student_id, $age, $college, $grades, $email)
-    {
-
-        $profils= ProfilService::getProfilByStuudentId($student_id);
 
 
 
 
 
 
-    
 
 
-		while( $row = $st->fetch() )
-			$users[] = new User( $row['id'], $row['username'], $row['password_hash'], $row['email'], $row['registration_sequence'], $row['has_registered']);
 
-		foreach( $users as $user)
-			if( $user->username == $_SESSION['username'])
-				$value = $user->id;
 
-		$st = $db->prepare( 'UPDATE users SET age = :age, college = :college, grades = :grades, email = :email WHERE id_user = :id_user' );
-			$st->execute( array( 'id_product'=>$id_product,'id_user' => $value, 'rating' => $Ocjena, 'comment' => $Komentar) );
-		return true;
-	}*/
+
+
+
+
+
+
+
+
+
+
+
+
 
 /*
     public function getAds()
