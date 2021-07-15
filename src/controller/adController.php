@@ -28,7 +28,7 @@ class AdController
 			$check = $ls->addNewAd( $_POST['adTitle'], $_POST['adText'], $_POST['adSalary'] );
 		if( !$check ){
 				$title = 'Oglas vec postoji!';
-				require_once __DIR__ . '/../view/ads/add_new_ad.php';
+				require_once __DIR__ . '/../view/ads/addNewAd.php';
 			}
 			else{
 				$title = 'Uspjesno dodan novi oglas!';
@@ -37,16 +37,17 @@ class AdController
 
 		}
 		else
-				require_once __DIR__ . '/../view/ads/add_new_ad.php';
+			require_once __DIR__ . '/../view/ads/addNewAd.php';
 	}
 
 	public function myAds()
 	{
+		session_start();
+
 		$ls = AdService::getInstance();
 
 		if( !isset( $_SESSION['cname'] ) || !preg_match( '/^[a-zA-Z ,-.]+$/', $_SESSION['cname'] ) )
 		{
-			//header( 'Location: index.php?rt=books/search');
 			exit();
 		}
 

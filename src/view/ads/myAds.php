@@ -1,5 +1,5 @@
 <?php
-session_start();
+//session_start();
 $title = "My ads";
 require_once __DIR__ . "/../../model/ad/ad.service.php";
 
