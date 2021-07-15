@@ -13,9 +13,10 @@
 			echo '<br>';
 			echo 'Welcome, '.$_SESSION['cname']. ' !';	
 					
-			//echo '<a class="navbar-brand"  href="./../src/view/homepage/homepage.php">Početna</a>';
+			echo '<a class="navbar-brand"  href="index.php?rt=companyLogin/homepage">Početna</a>';
 			echo '<a class="navbar-brand"  href="index.php?rt=ad/addNewAd">Stvori oglas</a>';
 			echo '<a class="navbar-brand"  href="index.php?rt=ad/myAds">Pogledaj svoje oglase</a>';
+			echo '<a class="navbar-brand"  href="index.php?rt=companyLogin/myCompany">Podaci o tvrtci</a>';
 
 			echo '<form class="d-flex" method="POST" action="./index.php?rt=companyLogin/logout">' . 
 				'<button class="btn bg-white" type="submit">Odjava</button>' . 

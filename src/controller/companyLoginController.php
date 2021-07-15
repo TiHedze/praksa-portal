@@ -25,6 +25,7 @@ class CompanyLoginController
         if ($company->verifyPassword($request['password'])) {
             session_start();
             $_SESSION['cname'] = $request['name'];
+            $_SESSION['company'] = $company;
             $_SESSION['cid'] = $company->id;
             require __DIR__ . "/../view/homepage/homepage.php";
 
@@ -51,6 +52,20 @@ class CompanyLoginController
             require __DIR__ . "/../view/companyRegister/companyRegister.php";
         }
     }
+
+    public function homepage()
+    {
+        session_start();
+
+        require_once __DIR__ . '/../view/homepage/homepage.php';
+    }
+
+    public function myCompany()
+	{
+		session_start();
+
+		require_once __DIR__ . '/../view/companyRegister/myCompany.php';
+	}
 
     public function logout()
     {
