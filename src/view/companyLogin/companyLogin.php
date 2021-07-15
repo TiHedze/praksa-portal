@@ -21,7 +21,7 @@ if(isset($error) && $error === true )
                 </div>
                 <div class="mb-3">
                     <label for="password" class="form-label">Password:</label>
-                    <input id="password" class="form-control" name ="password" type="text" required>
+                    <input id="password" class="form-control" name ="password" type="password" required>
                 </div>
 
                 <div class="d-flex flex-row justify-content-between">

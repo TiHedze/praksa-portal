@@ -11,5 +11,13 @@ require_once __DIR__ . '/../model/user/user.service.php';
 
             require_once __DIR__ . '/../view/homepage/users_index.php';
         }
+        public function homepage()
+        {
+            session_start();
+
+            require_once __DIR__ . '/../view/homepage/homepage.php';
+        }
     }
+
+    
 ?>

@@ -27,11 +27,11 @@
 			echo '<br>';
 			echo 'Welcome, '.$_SESSION['username']. ' !';		
 			
-			//echo '<a class="navbar-brand"  href="./../src/view/homepage/homepage.php">Početna</a>';
+			echo '<a class="navbar-brand"  href="index.php?rt=users/homepage">Početna</a>';
 
 			echo '<a class="navbar-brand"  href="index.php?rt=profil/profil">Upotpuni svoj profil</a>';
 			echo '<a class="navbar-brand"  href="index.php?rt=profil/showProfil">Pogledaj svoj profil</a>';
-			//echo '<a class="navbar-brand"  href="./../src/view/ads/myAds.php">Pogledaj svoje prijave</a>';
+			echo '<a class="navbar-brand"  href="index.php?rt=ad/myApply">Pogledaj svoje prijave</a>';
 
 			echo '<form class="d-flex" method="POST" action="./index.php?rt=login/logout">' . 
 				'<button class="btn bg-white" type="submit">Odjava</button>' . 

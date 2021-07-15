@@ -158,6 +158,42 @@ class AdService
 
 		return $myads;
 	}
+
+    function getAdsByStudent( $user_id )
+	{
+		$ads = [];
+		$myads = [];
+        $applcations = [];
+
+        $ads = AdService::getAds();
+
+		$value = 0;
+        $query = $this->db->prepare('SELECT * FROM ad_application WHERE ( user_id = :user_id)');
+        $exist = $query->execute(array("user_id" => $user_id));
+
+		while( $row = $query->fetch() ){
+			$applcations[] = [ $row['id'], $row['ad_id'], $row['user_id'] ];
+		}
+
+		foreach ($applcations as $apply ) {
+			if( $apply[2] == $user_id )
+				$value = $apply[1];
+            try
+            {
+                $query = $this->db->prepare( 'SELECT id, title, company_id, text, company_name, salary FROM ads WHERE id=:id' );
+                $exist = $query->execute( array( 'id' => $value ) );
+            }
+            catch( PDOException $e ) { exit( 'PDO error ' . $e->getMessage() ); }
+
+
+            while( $row = $query->fetch() )
+            {
+                $myads[] = AdModel::retrieveAd($row['id'], $row['title'], $row['company_id'], $row['text'],$row['company_name'] , $row['salary']);
+            }
+        }
+		return $myads;
+	}
+
     function apply()
     {
         $data = json_decode(file_get_contents('php://input'), true);
